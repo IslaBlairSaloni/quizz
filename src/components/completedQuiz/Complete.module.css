@@ -1,0 +1,20 @@
+.result {
+    width: 48%;
+    position: absolute;
+    top: 22%;
+    right: 26%;
+}
+
+.completedScore {
+    position: relative;
+}
+
+p {
+    font-size: 2rem;
+    color: #fff;
+}
+
+span {
+    font-size: 9rem;
+    color: #fff;
+}

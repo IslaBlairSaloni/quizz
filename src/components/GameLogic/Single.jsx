@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Single.css';
+import styles from './Single.module.css';
 import Complete from '../completedQuiz/Complete';
 
 const Single = () => {
@@ -45,18 +45,19 @@ const Single = () => {
     const currentQuestion = questions[currentQuestionIndex];
 
     return (
-        <div>
-            <h1>Quizz Game</h1>
+        <div className='my-5'>
             {currentQuestion ? (
                 <div>
-                    <div className="border flex justify-center items-center p-5 yellow ">
+                    <div
+                        className={`${styles.yellow} flex justify-center items-center p-5 yellow `}>
                         <p className="text-center h3">
                             {currentQuestion.question}
                         </p>
                     </div>
-                    <div className="my-5 d-flex align-items-center justify-content-center">
+                    <div className="my-5 d-flex align-items-center justify-content-evenly">
                         {currentQuestion.answers.map((answer) => (
                             <button
+                                className={styles.button}
                                 key={answer.id}
                                 onClick={() => handleAnswerClick(answer.id)}>
                                 {answer.text}

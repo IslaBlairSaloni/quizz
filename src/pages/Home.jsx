@@ -6,7 +6,7 @@ const Home = () => {
     return (
         <div className="container w-75 p-5">
             <div className="d-flex align-items-center justify-content-between">
-                <Link to="/singleplayer">
+                <Link to="/single">
                     <button className="button">Single</button>
                 </Link>
                 <button className="button">Multi Player</button>
