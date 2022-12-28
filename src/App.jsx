@@ -1,10 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
+
 import Navbar from './components/Navbar/Navbar';
-import About from './pages/About';
-import Contact from './pages/Contact';
-import Single from './components/GameLogic/Single';
+import Single from './components/SinglePlayer/Single';
+import Contact from './pages/Contact/Contact';
+import About from './pages/About/About';
+import Home from './pages/Home/Home';
+import Login from './pages/Login/Login';
+import SignUp from './pages/SignUp/SignUp';
 
 const App = () => {
     return (
@@ -15,6 +18,8 @@ const App = () => {
                 <Route path="/single" element={<Single />}></Route>
                 <Route path="/about" element={<About />}></Route>
                 <Route path="/contact" element={<Contact />}></Route>
+                <Route path="/login" element={<Login />}></Route>
+                <Route path="/signup" element={<SignUp />}></Route>
             </Routes>
         </Router>
     );

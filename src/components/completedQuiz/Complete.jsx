@@ -9,13 +9,19 @@ const Complete = (props) => {
                 <img src={img} alt="" />
             </div>
 
-            <p
-                className={`${styles.result} d-flex flex-column align-items-center`}>
-                Your Score
-                <span>{props.score}</span>
-            </p>
+            <div className={styles.result}>
+                <h3>Your Score</h3>
+                <div>
+                    <span>{props.score}</span>
+                </div>
+                <div>
+                    <p>Out of {'2'}</p>
+                </div>
+            </div>
 
-            <Link to="/">Play Again</Link>
+            <button className={`ms-auto ${styles.customBtn}`}>
+                <Link to="/">Play Again</Link>
+            </button>
         </div>
     );
 };

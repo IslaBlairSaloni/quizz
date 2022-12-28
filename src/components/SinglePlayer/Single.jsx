@@ -59,9 +59,22 @@ const Single = () => {
                         </div>
                         {/* Navigation Buttons */}
 
-                        <div className=" d-flex justify-content-center align-items-center">
-                            <button onClick={submitHandler}>Submit</button>
-                            <button onClick={previousHandler}>Previous</button>
+                        <div className=" d-flex justify-content-evenly">
+                            <button
+                                className={` ${styles.customBtn}`}
+                                onClick={previousHandler}>
+                                Previous
+                            </button>
+                            <button
+                                className={` ${styles.customBtn}`}
+                                onClick={submitHandler}>
+                                Submit
+                            </button>
+                            <button
+                                className={` ${styles.customBtn}`}
+                                onClick={previousHandler}>
+                                Next
+                            </button>
                         </div>
                     </div>
                 ) : (

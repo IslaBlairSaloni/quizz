@@ -8,3 +8,8 @@ Quizz Histroy
 Multiplayer aur link
 signup page say leyna kya hai ? <usename email pass>
 Hosting ka solution
+
+
+First Create Login page , Signup page , Histroy page , and later make clock
+
+
