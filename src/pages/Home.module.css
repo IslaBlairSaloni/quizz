@@ -1,0 +1,11 @@
+.btnClass {
+    background-color: #fcc822;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 142px;
+    width: 251px;
+    border-radius: 24px;
+    font-weight: 700;
+    font-size: 1.7rem;
+}

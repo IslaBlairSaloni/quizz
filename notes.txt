@@ -2,3 +2,9 @@
 Do all styles in module.css
 Create clock timer while answering
 Create previous and next button
+
+
+Quizz Histroy
+Multiplayer aur link
+signup page say leyna kya hai ? <usename email pass>
+Hosting ka solution

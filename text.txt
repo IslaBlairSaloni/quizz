@@ -1,33 +1,52 @@
 import React, { useState } from 'react';
 import styles from './Single.module.css';
 import Complete from '../completedQuiz/Complete';
-import data from '../../../records';
+
 const Single = () => {
-    const [questions] = useState(data);
+    const [questions] = useState([
+        {
+            id: 1,
+            question: 'What is my name?',
+            answers: [
+                {
+                    id: 1,
+                    text: 'A very long quesiton over lets check how it works',
+                },
+                { id: 2, text: 'Figma' },
+                { id: 3, text: 'Convert' },
+                { id: 4, text: 'Hello' },
+            ],
+            correctAnswerId: 1,
+        },
+        {
+            id: 2,
+            question:
+                'What is the correct syntax for a function in JavaScript?',
+            answers: [
+                { id: 1, text: 'function myFunction()' },
+                { id: 2, text: 'function = myFunction()' },
+                { id: 3, text: 'function: myFunction()' },
+                { id: 4, text: 'function myFunction' },
+            ],
+            correctAnswerId: 1,
+        },
+        // Add more questions here...
+    ]);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [score, setScore] = useState(0);
-    const [answered, setAnswered] = useState(false);
-
+    const [onColor, SetOnColor] = useState(false);
     const handleAnswerClick = (answerId) => {
-        if (answerId === currentQuestion.correctAnswerId) {
-            console.log('Correct Ans Clicked!!');
+        const currentQuestion = questions[currentQuestionIndex];
 
+        if (answerId === currentQuestion.correctAnswerId) {
             setScore(score + 1);
         }
-        // setCurrentQuestionIndex(currentQuestionIndex + 1);\
-        setAnswered(true);
-    };
 
-    // When the submit button is clicked
-    const submitHandler = () => {
         setCurrentQuestionIndex(currentQuestionIndex + 1);
-        setAnswered(false);
     };
 
-    // When the previous button is clicked
-    const previousHandler = () => {
-        setAnswered(false);
-        setCurrentQuestionIndex(currentQuestionIndex - 1);
+    const colorChangeHandler = () => {
+        SetOnColor('white');
     };
 
     const currentQuestion = questions[currentQuestionIndex];
@@ -46,27 +65,23 @@ const Single = () => {
                         <div className="my-2 p-5 d-flex justify-content-start flex-column">
                             {currentQuestion.answers.map((answer) => (
                                 <button
-                                    className={styles.button}
+                                    className={`${styles.button} m-2 `}
                                     key={answer.id}
-                                    onClick={() => {
-                                        if (!answered) {
-                                            handleAnswerClick(answer.id);
-                                        }
-                                    }}>
+                                    onClick={() =>
+                                        handleAnswerClick(answer.id)
+                                    }>
+                                    {answer.id}
+                                    {'. '}
                                     {answer.text}
                                 </button>
                             ))}
                         </div>
-                        {/* Navigation Buttons */}
-
-                        <div className=" d-flex justify-content-center align-items-center">
-                            <button onClick={submitHandler}>Submit</button>
-                            <button onClick={previousHandler}>Previous</button>
-                        </div>
                     </div>
                 ) : (
                     <div className="my-5 d-flex align-items-center justify-content-center">
-                        <Complete score={score} />
+                        <p>
+                            <Complete score={score} />
+                        </p>
                     </div>
                 )}
             </div>

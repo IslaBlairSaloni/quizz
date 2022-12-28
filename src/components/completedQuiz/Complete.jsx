@@ -1,6 +1,7 @@
 import React from 'react';
 import img from '../../assets/back.png';
 import styles from './Complete.module.css';
+import { Link } from 'react-router-dom';
 const Complete = (props) => {
     return (
         <div className={styles.completedScore}>
@@ -13,6 +14,8 @@ const Complete = (props) => {
                 Your Score
                 <span>{props.score}</span>
             </p>
+
+            <Link to="/">Play Again</Link>
         </div>
     );
 };

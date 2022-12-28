@@ -1,19 +1,19 @@
 import React from 'react';
-import './Home.css';
 import { Link } from 'react-router-dom';
+import styles from './Home.module.css';
 
 const Home = () => {
     return (
         <div className="container w-75 p-5">
-            <div className="d-flex align-items-center justify-content-between">
-                <Link to="/single">
-                    <button className="button">Single</button>
+            <div className="d-flex  justify-content-evenly">
+                <Link to="single">
+                    <button className={styles.btnClass}>TIMED QUIZ</button>
                 </Link>
-                <button className="button">Multi Player</button>
+                <button className={styles.btnClass}>UNTIMED QUIZZ</button>
             </div>
-            <div className="d-flex align-items-center justify-content-between mt-5">
-                <button className="button">Create Quiz</button>
-                <button className="button">Use Link</button>
+            <div className="d-flex  justify-content-evenly mt-5">
+                <button className={styles.btnClass}>CREATE QUIZ</button>
+                <button className={styles.btnClass}>USE LINK</button>
             </div>
         </div>
     );
