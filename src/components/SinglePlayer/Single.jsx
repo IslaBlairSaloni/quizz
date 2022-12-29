@@ -1,28 +1,44 @@
-import React, { useState } from 'react';
-import styles from './Single.module.css';
-import Complete from '../completedQuiz/Complete';
+import React, { useState, useEffect, useMemo } from 'react';
+import Complete from '../CompletedQuiz/Complete';
 import data from '../../../records';
+import Question from '../Question/Question';
+import Answer from '../Answers/Answer';
+import NavigationButtons from '../NavigationButtons/NavigationButtons';
+
 const Single = () => {
     const [questions] = useState(data);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [score, setScore] = useState(0);
     const [answered, setAnswered] = useState(false);
+    const [selectedAnswer, setSelectedAnswer] = useState(null);
 
     const handleAnswerClick = (answerId) => {
-        if (answerId === currentQuestion.correctAnswerId) {
-            console.log('Correct Ans Clicked!!');
-
+        setSelectedAnswer(answerId);
+        if (
+            answerId === currentQuestion.correctAnswerId &&
+            answerId !== score
+        ) {
             setScore(score + 1);
         }
         // setCurrentQuestionIndex(currentQuestionIndex + 1);\
+        console.log(selectedAnswer);
         setAnswered(true);
     };
 
     // When the submit button is clicked
     const submitHandler = () => {
         setCurrentQuestionIndex(currentQuestionIndex + 1);
-        setAnswered(false);
     };
+
+    useEffect(() => {
+        setAnswered(false);
+    }, [currentQuestionIndex]);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setSelectedAnswer(null);
+        }, 100);
+    }, [currentQuestionIndex]);
 
     // When the previous button is clicked
     const previousHandler = () => {
@@ -30,52 +46,33 @@ const Single = () => {
         setCurrentQuestionIndex(currentQuestionIndex - 1);
     };
 
-    const currentQuestion = questions[currentQuestionIndex];
+    // For the current question
+    const currentQuestion = useMemo(
+        () => questions[currentQuestionIndex],
+        [currentQuestionIndex]
+    );
 
     return (
         <>
             <div className="my-5">
                 {currentQuestion ? (
                     <div>
-                        <div
-                            className={`${styles.yellow} flex justify-center items-center p-5 yellow `}>
-                            <p className="text-center h3">
-                                {currentQuestion.question}
-                            </p>
-                        </div>
-                        <div className="my-2 p-5 d-flex justify-content-start flex-column">
-                            {currentQuestion.answers.map((answer) => (
-                                <button
-                                    className={styles.button}
-                                    key={answer.id}
-                                    onClick={() => {
-                                        if (!answered) {
-                                            handleAnswerClick(answer.id);
-                                        }
-                                    }}>
-                                    {answer.text}
-                                </button>
-                            ))}
-                        </div>
+                        {/* Question Component */}
+                        <Question currentQuestion={currentQuestion} />
+                        {/* Answers Component */}
+                        <Answer
+                            currentQuestion={currentQuestion}
+                            handleAnswerClick={handleAnswerClick}
+                            selectedAnswer={selectedAnswer}
+                        />
                         {/* Navigation Buttons */}
 
-                        <div className=" d-flex justify-content-evenly">
-                            <button
-                                className={` ${styles.customBtn}`}
-                                onClick={previousHandler}>
-                                Previous
-                            </button>
-                            <button
-                                className={` ${styles.customBtn}`}
-                                onClick={submitHandler}>
-                                Submit
-                            </button>
-                            <button
-                                className={` ${styles.customBtn}`}
-                                onClick={previousHandler}>
-                                Next
-                            </button>
-                        </div>
+                        <NavigationButtons
+                            previousHandler={previousHandler}
+                            submitHandler={submitHandler}
+                            currentQuestionIndex={currentQuestionIndex}
+                            questionsLength={questions.length}
+                        />
                     </div>
                 ) : (
                     <div className="my-5 d-flex align-items-center justify-content-center">

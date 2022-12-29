@@ -1,0 +1,14 @@
+.customBtn {
+    width: 136px;
+    height: 58px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fed21c;
+    box-shadow: 0px 3px 7px -3px rgb(0 0 0 / 69%);
+}
+
+.customBtn a {
+    color: white;
+    text-decoration: none;
+}

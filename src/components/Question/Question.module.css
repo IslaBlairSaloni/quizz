@@ -1,0 +1,16 @@
+.yellow {
+    background-color: #fcc822;
+    position: relative;
+}
+
+.grey {
+    background-color: grey;
+    width: 10%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -4,17 +4,33 @@ import styles from './Home.module.css';
 
 const Home = () => {
     return (
-        <div className="container w-75 p-5">
-            <div className="d-flex  justify-content-evenly">
-                <Link to="single">
-                    <button className={styles.btnClass}>TIMED QUIZ</button>
-                </Link>
-                <button className={styles.btnClass}>UNTIMED QUIZZ</button>
+        <div className="container p-5">
+            <div className="row">
+                <div className="col-lg-6 d-flex justify-content-center  my-5">
+                    <Link to="single">
+                        <button className={styles.btnClass}>TIMED QUIZ</button>
+                    </Link>
+                </div>
+                <div className="col-lg-6 d-flex justify-content-center  my-5">
+                    <Link>
+                        <button className={styles.btnClass}>
+                            UNTIMED QUIZZ
+                        </button>
+                    </Link>
+                </div>
+
+                <div className="col-lg-6 d-flex justify-content-center my-5">
+                    <Link>
+                        <button className={styles.btnClass}>CREATE QUIZ</button>
+                    </Link>
+                </div>
+                <div className="col-lg-6 d-flex justify-content-center my-5">
+                    <Link>
+                        <button className={styles.btnClass}>USE LINK</button>
+                    </Link>
+                </div>
             </div>
-            <div className="d-flex  justify-content-evenly mt-5">
-                <button className={styles.btnClass}>CREATE QUIZ</button>
-                <button className={styles.btnClass}>USE LINK</button>
-            </div>
+            <div />
         </div>
     );
 };
